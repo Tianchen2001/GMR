@@ -82,6 +82,24 @@ IK_CONFIG_DICT = {
     "xsens_mvn": {
         "unitree_g1": IK_CONFIG_ROOT / "xsens_mvn_to_g1.json",
     },
+    # SKEL variants. The loader reads each config's top-level "rot_offset_mode" ("subject" -> rest-normalised
+    # orientations, "general" -> absolute joints_ori; absent -> subject, i.e. the old hand-written config).
+    # The driver takes a base key (skel_general / skel_general_hiproll) and inserts "_<gender>" after "skel_general".
+    "skel": {                                   # old T-pose-anchored offsets, femur on hip_yaw_link
+        "unitree_g1": IK_CONFIG_ROOT / "skel_to_g1.json",
+    },
+    "skel_general_male": {                      # axis-anchored, general mode, femur on hip_yaw_link
+        "unitree_g1": IK_CONFIG_ROOT / "skel_to_g1_general_male.json",
+    },
+    "skel_general_female": {
+        "unitree_g1": IK_CONFIG_ROOT / "skel_to_g1_general_female.json",
+    },
+    "smpl": {
+        "unitree_g1": IK_CONFIG_ROOT / "smpl_to_g1.json"
+    },
+    "smpl_bone": {
+        "unitree_g1": IK_CONFIG_ROOT / "smpl_to_g1_bone.json"
+    },
 }
 
 
