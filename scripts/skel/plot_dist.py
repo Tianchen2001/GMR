@@ -49,8 +49,8 @@ def main():
     fs = a.fontsize
 
     if a.overlay:                                                       # one clip, angle vs time per arm
-        D = [np.degrees(pickle.load(open(i[a.overlay], "rb"))["dof_pos"]) for i in idx]
-        fps = float(pickle.load(open(idx[0][a.overlay], "rb"))["fps"])
+        ov = clip_key(a.overlay); D = [np.degrees(pickle.load(open(i[ov], "rb"))["dof_pos"]) for i in idx]
+        fps = float(pickle.load(open(idx[0][ov], "rb"))["fps"])
         n = len(joints); cols = 2 if n <= 4 else 4; rows = int(np.ceil(n / cols))
         fig, axes = plt.subplots(rows, cols, figsize=(3.4 * cols, 1.8 * rows), dpi=200, squeeze=False)
         for ax, (jn, adr, lo, hi) in zip(axes.ravel(), joints):
